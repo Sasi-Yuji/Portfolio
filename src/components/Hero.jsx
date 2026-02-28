@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Linkedin, Github, Mail, Globe, ArrowRight, Instagram } from 'lucide-react';
 import { ParticleTextEffect } from './ui/particle-text-effect';
 import { ArchitectGrid } from './ui/ArchitectGrid';
-import avatarImg from '../assets/avatar.png';
+import profileImg from '../assets/my profile.png';
 
 const Hero = () => {
     const socialLinks = [
@@ -106,18 +106,21 @@ const Hero = () => {
                         <div className="absolute w-[200px] h-[200px] md:w-[280px] md:h-[280px] bg-accent/20 rounded-full blur-[50px] md:blur-[70px] animate-pulse"></div>
 
                         <motion.div
-                            className="relative z-10 w-[250px] h-[250px] md:w-[320px] md:h-[320px] lg:w-[400px] lg:h-[400px] flex items-center justify-center pointer-events-none"
+                            className="relative z-10 w-[250px] h-[250px] md:w-[320px] md:h-[320px] lg:w-[400px] lg:h-[400px] flex items-center justify-center pointer-events-none p-2 md:p-3 lg:p-4"
                             initial={{ scale: 0.8, opacity: 0, y: 20 }}
                             animate={{ scale: 1, opacity: 1, y: 0 }}
                             transition={{ duration: 1.2, ease: "easeOut" }}
                             whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
                         >
-                            <img
-                                src={avatarImg}
-                                alt="Sasikumar R Avatar"
-                                className="w-full h-full object-contain drop-shadow-[0_20px_50px_rgba(11,110,79,0.3)] filter brightness-105"
-                                style={{ transform: "perspective(1000px) rotateY(-5deg)" }}
-                            />
+                            <div className="w-full h-full rounded-full overflow-hidden border-2 border-white/50 shadow-2xl relative">
+                                <img
+                                    src={profileImg}
+                                    alt="Sasikumar R"
+                                    className="w-full h-full object-cover filter brightness-105"
+                                />
+                                {/* Overlay to soften the image slightly if needed */}
+                                <div className="absolute inset-0 bg-accent/5 pointer-events-none"></div>
+                            </div>
                         </motion.div>
                     </div>
 

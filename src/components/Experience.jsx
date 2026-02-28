@@ -117,7 +117,7 @@ const Experience = () => {
             company: "PPG Institute of Technology",
             duration: "2021 – 2025",
             points: [
-                "Achieved a CGPA of 7.6/10.",
+                "Achieved a CGPA of 7.8/10.",
                 "Focused on Software Engineering, Data Structures, and Cloud Computing principles."
             ],
             isEducation: true
