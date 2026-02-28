@@ -128,28 +128,40 @@ export function ParticleTextEffect() {
         offscreenCanvas.height = canvasHeight
         const offscreenCtx = offscreenCanvas.getContext("2d", { willReadFrequently: true })
 
+        const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024;
+        const isSmallMobile = typeof window !== 'undefined' && window.innerWidth < 640;
+
+        // Layout text
+        let startY = isMobile ? 10 : 20;
+        const xPos = isMobile ? canvasWidth / 2 : 10;
+
         offscreenCtx.clearRect(0, 0, canvasWidth, canvasHeight)
-        offscreenCtx.textAlign = "left"
+        offscreenCtx.textAlign = isMobile ? "center" : "left"
         offscreenCtx.textBaseline = "top"
 
         // Layout text
-        let startY = 20;
         offscreenCtx.fillStyle = "rgb(5, 85, 60)"; // --color-highlight
-        offscreenCtx.font = "900 74px 'Outfit', sans-serif";
-        offscreenCtx.fillText("Hi, I'm", 10, startY);
+        offscreenCtx.font = isMobile
+            ? (isSmallMobile ? "900 38px 'Outfit', sans-serif" : "900 46px 'Outfit', sans-serif")
+            : "900 74px 'Outfit', sans-serif";
+        offscreenCtx.fillText("Hi, I'm", xPos, startY);
 
-        startY += 82;
+        startY += isMobile ? (isSmallMobile ? 48 : 54) : 82;
         offscreenCtx.fillStyle = "rgb(34, 197, 94)"; // --color-accent
-        offscreenCtx.font = "900 96px 'Outfit', sans-serif";
-        offscreenCtx.fillText("Sasikumar R", 10, startY);
+        offscreenCtx.font = isMobile
+            ? (isSmallMobile ? "900 48px 'Outfit', sans-serif" : "900 64px 'Outfit', sans-serif")
+            : "900 96px 'Outfit', sans-serif";
+        offscreenCtx.fillText("Sasikumar R", xPos, startY);
 
-        startY += 120;
+        startY += isMobile ? (isSmallMobile ? 64 : 80) : 120;
         offscreenCtx.fillStyle = "rgb(5, 85, 60)";
-        offscreenCtx.font = "900 38px 'Outfit', sans-serif";
-        offscreenCtx.fillText("MERN Stack Developer &", 10, startY);
+        offscreenCtx.font = isMobile
+            ? (isSmallMobile ? "900 20px 'Outfit', sans-serif" : "900 28px 'Outfit', sans-serif")
+            : "900 38px 'Outfit', sans-serif";
+        offscreenCtx.fillText("MERN Stack Developer &", xPos, startY);
 
-        startY += 48;
-        offscreenCtx.fillText("UI/UX Enthusiast", 10, startY);
+        startY += isMobile ? (isSmallMobile ? 28 : 36) : 48;
+        offscreenCtx.fillText("UI/UX Enthusiast", xPos, startY);
 
         const imageData = offscreenCtx.getImageData(0, 0, canvasWidth, canvasHeight)
         const pixels = imageData.data

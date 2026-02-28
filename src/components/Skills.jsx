@@ -121,33 +121,33 @@ const Skills = () => {
                         intervalMs={4000}
                         maxVisible={3}
                         renderCard={(item, { active }) => (
-                            <div className={`h-full w-full p-10 flex flex-col justify-between transition-all duration-500 ${active ? 'bg-white' : 'bg-white/90'}`}>
+                            <div className={`h-full w-full p-5 md:p-10 flex flex-col justify-between transition-all duration-500 ${active ? 'bg-white' : 'bg-white/90'}`}>
                                 <div>
-                                    <div className="flex items-center gap-6 mb-8">
-                                        <div className={`p-5 rounded-3xl bg-accent/10 text-accent transition-transform duration-500 ${active ? 'scale-110 rotate-3' : ''}`}>
+                                    <div className="flex items-center gap-4 md:gap-6 mb-6 md:mb-8">
+                                        <div className={`p-4 md:p-5 rounded-3xl bg-accent/10 text-accent transition-transform duration-500 ${active ? 'scale-110 rotate-3' : ''}`}>
                                             {item.icon}
                                         </div>
                                         <div>
-                                            <h3 className="text-3xl font-black text-highlight mb-1">{item.title}</h3>
+                                            <h3 className="text-2xl md:text-3xl font-black text-highlight mb-1">{item.title}</h3>
                                             <div className="h-1.5 w-12 bg-accent rounded-full"></div>
                                         </div>
                                     </div>
 
-                                    <p className="text-highlight/70 text-lg leading-relaxed mb-10 italic">
+                                    <p className="text-highlight/70 text-base md:text-lg leading-relaxed mb-6 md:mb-10 italic">
                                         "{item.description}"
                                     </p>
 
-                                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
                                         {item.skills.map((skill, idx) => (
                                             <motion.div
                                                 key={idx}
-                                                className="flex items-center gap-3 p-4 rounded-2xl bg-primary/10 border border-accent/5 hover:border-accent/40 hover:bg-white hover:shadow-lg transition-all duration-300 group"
+                                                className="flex items-center gap-2 p-3 md:p-4 rounded-2xl bg-primary/10 border border-accent/5 hover:border-accent/40 hover:bg-white hover:shadow-lg transition-all duration-300 group"
                                                 whileHover={{ y: -5 }}
                                             >
                                                 <div className="text-accent group-hover:scale-125 transition-transform duration-300">
                                                     {skill.icon}
                                                 </div>
-                                                <span className="text-sm font-bold text-highlight/80 group-hover:text-highlight truncate">{skill.name}</span>
+                                                <span className="text-xs md:text-sm font-bold text-highlight/80 group-hover:text-highlight leading-tight">{skill.name}</span>
                                             </motion.div>
                                         ))}
                                     </div>

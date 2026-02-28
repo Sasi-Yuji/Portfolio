@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, MessageSquare, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
-import emailjs from '@emailjs/browser';
+// Using FormSubmit.co for zero-backend, zero-config email delivery
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -27,32 +27,34 @@ const Contact = () => {
         setStatus('sending');
 
         try {
-            // Replace these with your actual IDs from EmailJS
-            // Service ID: service_...
-            // Template ID: template_...
-            // Public Key: ...
+            const response = await fetch("https://formsubmit.co/ajax/kumarsasi9081@gmail.com", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    "Full Name": formData.name,
+                    "Email Address": formData.email,
+                    "Subject": formData.subject,
+                    "Message": formData.message,
+                    "_subject": `New Portfolio Message: ${formData.subject}`,
+                    "_template": "table",
+                    "_captcha": "false"
+                })
+            });
 
-            const templateParams = {
-                from_name: formData.name,
-                from_email: formData.email,
-                to_name: "Sasikumar",
-                subject: formData.subject,
-                message: formData.message,
-                reply_to: formData.email
-            };
+            const result = await response.json();
 
-            await emailjs.send(
-                'YOUR_SERVICE_ID', // Replace with your Service ID
-                'YOUR_TEMPLATE_ID', // Replace with your Template ID
-                templateParams,
-                'YOUR_PUBLIC_KEY'   // Replace with your Public Key
-            );
-
-            setStatus('success');
-            setFormData({ name: '', email: '', subject: '', message: '' });
-            setTimeout(() => setStatus('idle'), 5000);
+            if (result.success === "true") {
+                setStatus('success');
+                setFormData({ name: '', email: '', subject: '', message: '' });
+                setTimeout(() => setStatus('idle'), 5000);
+            } else {
+                throw new Error("Form submission failed");
+            }
         } catch (error) {
-            console.error('EmailJS Error:', error);
+            console.error('Submission Error:', error);
             setStatus('error');
             setTimeout(() => setStatus('idle'), 5000);
         }
@@ -202,8 +204,8 @@ const Contact = () => {
                                     type="submit"
                                     disabled={status === 'sending'}
                                     className={`w-full py-4 md:py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] md:text-xs flex items-center justify-center gap-3 transition-all duration-300 ${status === 'sending'
-                                            ? 'bg-accent/20 text-accent cursor-not-allowed'
-                                            : 'bg-accent text-white hover:translate-y-[-4px] hover:shadow-2xl hover:shadow-accent/40 active:translate-y-0'
+                                        ? 'bg-accent/20 text-accent cursor-not-allowed'
+                                        : 'bg-accent text-white hover:translate-y-[-4px] hover:shadow-2xl hover:shadow-accent/40 active:translate-y-0'
                                         }`}
                                 >
                                     {status === 'sending' ? (

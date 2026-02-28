@@ -50,7 +50,7 @@ const Hero = () => {
 
                     <motion.div
                         variants={itemVariants}
-                        className="w-full h-[180px] md:h-[280px] lg:h-[320px] relative lg:-ml-4 mb-4 lg:mb-0"
+                        className="w-full h-[220px] md:h-[280px] lg:h-[320px] relative lg:-ml-4 mb-4 lg:mb-0"
                     >
                         {/* Interactive Particle Text */}
                         <ParticleTextEffect />

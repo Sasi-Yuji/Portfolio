@@ -63,14 +63,14 @@ export function CardStack({
     const [hovering, setHovering] = React.useState(false);
     const [dimensions, setDimensions] = React.useState({
         width: typeof window !== 'undefined' ? (window.innerWidth < 768 ? window.innerWidth - 48 : initialCardWidth) : initialCardWidth,
-        height: typeof window !== 'undefined' ? (window.innerWidth < 768 ? 450 : initialCardHeight) : initialCardHeight
+        height: typeof window !== 'undefined' ? (window.innerWidth < 768 ? 520 : initialCardHeight) : initialCardHeight
     });
 
     React.useEffect(() => {
         const handleResize = () => {
             setDimensions({
                 width: window.innerWidth < 768 ? window.innerWidth - 48 : initialCardWidth,
-                height: window.innerWidth < 768 ? 480 : initialCardHeight
+                height: window.innerWidth < 768 ? 520 : initialCardHeight
             });
         };
 

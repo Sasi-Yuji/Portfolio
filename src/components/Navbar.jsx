@@ -7,6 +7,14 @@ const Navbar = ({ scrolled }) => {
 
     const toggleMenu = () => setIsOpen(!isOpen);
 
+    React.useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+    }, [isOpen]);
+
     const navLinks = [
         { id: 'hero', label: 'Home' },
         { id: 'about', label: 'About' },
@@ -79,32 +87,62 @@ const Navbar = ({ scrolled }) => {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        className="md:hidden fixed inset-0 bg-primary flex items-center justify-center z-[105]"
-                        initial={{ opacity: 0, x: '100%' }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: '100%' }}
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        className="md:hidden fixed inset-0 bg-primary/95 backdrop-blur-2xl flex flex-col items-center justify-center z-[150]"
+                        initial={{ opacity: 0, y: '-100%' }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: '-100%' }}
+                        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                     >
-                        <ul className="flex flex-col items-center gap-8">
-                            {navLinks.map((link) => (
-                                <li key={link.id}>
+                        {/* Static Background Logo in Menu */}
+                        <div className="absolute top-8 left-8">
+                            <span className="text-2xl font-black text-gradient">{'<'}Sasi{' />'}</span>
+                        </div>
+
+                        {/* Close button inside the overlay itself to be absolutely sure it's accessible */}
+                        <button
+                            onClick={toggleMenu}
+                            className="absolute top-8 right-8 text-highlight p-2"
+                        >
+                            <X size={32} />
+                        </button>
+
+                        <ul className="flex flex-col items-center gap-6">
+                            {navLinks.map((link, index) => (
+                                <motion.li
+                                    key={link.id}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.1 + index * 0.05 }}
+                                >
                                     <button
-                                        className="text-3xl font-bold text-highlight/80 hover:text-accent transition-colors"
+                                        className="text-4xl font-black text-highlight/90 hover:text-accent transition-colors"
                                         onClick={() => handleNavClick(link.id)}
                                     >
                                         {link.label}
                                     </button>
-                                </li>
+                                </motion.li>
                             ))}
-                            <li className="mt-4">
+                            <motion.li
+                                className="mt-8"
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 0.4 }}
+                            >
                                 <button
-                                    className="bg-accent text-white px-10 py-4 rounded-full font-bold text-xl"
+                                    className="bg-gradient-to-r from-[#0B4619] to-[#A3E635] text-white px-12 py-4 rounded-full font-black text-xl shadow-xl shadow-accent/20"
                                     onClick={() => handleNavClick('contact')}
                                 >
                                     Hire Me
                                 </button>
-                            </li>
+                            </motion.li>
                         </ul>
+
+                        {/* Bottom decorative elements for the menu */}
+                        <div className="absolute bottom-12 flex gap-6 text-highlight/40 font-black tracking-widest text-[10px] uppercase">
+                            <span>MERN Specialist</span>
+                            <span className="w-1 h-1 rounded-full bg-accent mt-1"></span>
+                            <span>Portfolio 2024</span>
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>
