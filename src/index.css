@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #D1F2EB;
+  --color-secondary: #FFFFFF;
+  --color-accent: #50C878;
+  --color-highlight: #0B6E4F;
+  --color-cyan-glow: #34D399;
+  --gradient-accent: linear-gradient(135deg, #0B4619 0%, #A3E635 100%);
+
+  --font-body: "Inter", sans-serif;
+  --font-heading: "Outfit", sans-serif;
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#0B4619] to-[#A3E635];
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-primary text-highlight font-body;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading font-bold;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+}
+
+@layer components {
+
+  /* Utility-like container instead of the built-in one for more control */
+  .main-container {
+    @apply mx-auto px-6 max-w-7xl w-full;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-gradient-to-r from-[#0B4619] to-[#A3E635] text-white px-8 py-3.5 rounded-full font-bold font-heading transition-all duration-300 shadow-xl shadow-accent/20 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-accent/40 cursor-pointer;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 bg-transparent text-highlight px-8 py-3.5 rounded-full font-bold font-heading transition-all duration-300 border-2 border-accent/30 hover:-translate-y-1.5 hover:bg-gradient-to-r hover:from-[#0B4619] hover:to-[#A3E635] hover:text-white hover:border-transparent hover:shadow-xl hover:shadow-accent/40 cursor-pointer;
+  }
+
+  .glass {
+    @apply bg-white/60 backdrop-blur-xl border border-white;
+  }
+
+  .card {
+    @apply bg-white rounded-3xl p-10 shadow-lg transition-all duration-500 border border-transparent hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent/20 hover:border-accent;
+  }
+
+  .bg-gradient-shapes {
+    @apply fixed inset-0 overflow-hidden pointer-events-none -z-10;
+  }
+
+  .shape-1 {
+    @apply absolute -top-[10%] -right-[5%] w-[500px] h-[500px] rounded-full bg-accent/20 blur-[80px] animate-pulse;
+  }
+
+  .shape-2 {
+    @apply absolute bottom-0 -left-[10%] w-[600px] h-[600px] rounded-full bg-cyan-glow/10 blur-[100px] animate-pulse;
+  }
+}
