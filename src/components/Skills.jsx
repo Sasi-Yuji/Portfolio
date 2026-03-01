@@ -24,19 +24,19 @@ const SkillNode = ({ icon: Icon, name }) => (
 const CategoryCard = ({ category, index }) => {
     // Dynamic Directions for "Out of Screen" Arrangement
     const initialPositions = [
-        { x: -500, y: 0, opacity: 0 }, // Card 0: from Left
-        { x: 500, y: 0, opacity: 0 },  // Card 1: from Right
-        { x: -500, y: 200, opacity: 0 }, // Card 2: from Bottom-Left
-        { x: 500, y: 200, opacity: 0 }  // Card 3: from Bottom-Right
+        { x: -100, y: 0, opacity: 0 }, // Card 0: from Left
+        { x: 100, y: 0, opacity: 0 },  // Card 1: from Right
+        { x: -100, y: 50, opacity: 0 }, // Card 2: from Bottom-Left
+        { x: 100, y: 50, opacity: 0 }  // Card 3: from Bottom-Right
     ];
 
     return (
         <motion.div
             initial={initialPositions[index]}
             whileInView={{ x: 0, y: 0, opacity: 1 }}
-            viewport={{ once: true, amount: 0.1 }}
+            viewport={{ once: true, amount: 0.05, margin: "0px 0px -50px 0px" }}
             transition={{
-                duration: 1,
+                duration: 0.8,
                 ease: [0.22, 1, 0.36, 1],
                 delay: index * 0.1
             }}
@@ -132,28 +132,28 @@ const Skills = () => {
 
                 <div className="flex flex-col items-center mb-16 text-center">
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.8, y: -50 }}
+                        initial={{ opacity: 0, scale: 0.8, y: -20 }}
                         whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
+                        viewport={{ once: true, margin: "-20px" }}
+                        transition={{ duration: 0.6 }}
                         className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 text-accent text-[10px] font-black uppercase tracking-[0.2em] mb-6"
                     >
                         <MousePointer2 size={12} /> Tech Arsenal
                     </motion.div>
 
                     <motion.h2
-                        initial={{ y: 150, opacity: 0 }}
+                        initial={{ y: 50, opacity: 0 }}
                         whileInView={{ y: 0, opacity: 1 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.8, delay: 0.1 }}
                         className="text-4xl md:text-7xl font-black text-highlight mb-4 tracking-tighter"
                     >
                         Technical <span className="text-accent underline decoration-accent/10 underline-offset-4">Toolkit.</span>
                     </motion.h2>
                     <motion.p
-                        initial={{ y: 100, opacity: 0 }}
+                        initial={{ y: 30, opacity: 0 }}
                         whileInView={{ y: 0, opacity: 1 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: true, margin: "-20px" }}
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="max-w-md text-highlight/50 text-xs md:text-sm font-bold uppercase tracking-[0.15em] leading-relaxed"
                     >

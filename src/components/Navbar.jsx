@@ -34,60 +34,62 @@ const Navbar = ({ scrolled }) => {
     };
 
     return (
-        <motion.nav
-            className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${scrolled
-                ? 'py-4 bg-primary/95 backdrop-blur-lg border-b border-highlight/10 shadow-sm'
-                : 'py-6 bg-transparent'
-                }`}
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-        >
-            <div className="main-container flex justify-between items-center relative">
-                <motion.a
-                    href="#hero"
-                    className="text-2xl font-black text-gradient"
-                    whileHover={{ scale: 1.05 }}
-                >
-                    {'<'}Sasi{' />'}
-                </motion.a>
-
-                {/* Desktop Menu */}
-                <div className="hidden md:flex items-center gap-8">
-                    <ul className="flex gap-8 items-center">
-                        {navLinks.map((link) => (
-                            <li key={link.id}>
-                                <button
-                                    className="text-highlight/80 hover:text-accent font-semibold tracking-wide transition-colors cursor-pointer group relative"
-                                    onClick={() => handleNavClick(link.id)}
-                                >
-                                    {link.label}
-                                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#0B4619] to-[#A3E635] transition-all duration-300 group-hover:w-full"></span>
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
-                    <button
-                        onClick={() => handleNavClick('contact')}
-                        className="bg-gradient-to-r from-[#0B4619] to-[#A3E635] text-white px-8 py-2.5 rounded-full hover:shadow-lg hover:shadow-accent/20 transition-all duration-300 font-bold text-sm tracking-wider"
+        <>
+            <motion.nav
+                className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${scrolled
+                    ? 'py-4 bg-primary/95 backdrop-blur-lg border-b border-highlight/10 shadow-sm'
+                    : 'py-6 bg-transparent'
+                    }`}
+                initial={{ y: -100 }}
+                animate={{ y: 0 }}
+            >
+                <div className="main-container flex justify-between items-center relative">
+                    <motion.a
+                        href="#hero"
+                        className="text-2xl font-black text-gradient"
+                        whileHover={{ scale: 1.05 }}
                     >
-                        Hire Me
+                        {'<'}Sasi{' />'}
+                    </motion.a>
+
+                    {/* Desktop Menu */}
+                    <div className="hidden md:flex items-center gap-8">
+                        <ul className="flex gap-8 items-center">
+                            {navLinks.map((link) => (
+                                <li key={link.id}>
+                                    <button
+                                        className="text-highlight/80 hover:text-accent font-semibold tracking-wide transition-colors cursor-pointer group relative"
+                                        onClick={() => handleNavClick(link.id)}
+                                    >
+                                        {link.label}
+                                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#0B4619] to-[#A3E635] transition-all duration-300 group-hover:w-full"></span>
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
+                        <button
+                            onClick={() => handleNavClick('contact')}
+                            className="bg-gradient-to-r from-[#0B4619] to-[#A3E635] text-white px-8 py-2.5 rounded-full hover:shadow-lg hover:shadow-accent/20 transition-all duration-300 font-bold text-sm tracking-wider"
+                        >
+                            Hire Me
+                        </button>
+                    </div>
+
+                    {/* Mobile Menu Toggle */}
+                    <button
+                        className="md:hidden text-highlight hover:text-accent p-2 transition-colors relative z-[110]"
+                        onClick={toggleMenu}
+                    >
+                        {isOpen ? <X size={28} /> : <Menu size={28} />}
                     </button>
                 </div>
+            </motion.nav>
 
-                {/* Mobile Menu Toggle */}
-                <button
-                    className="md:hidden text-highlight hover:text-accent p-2 transition-colors relative z-[110]"
-                    onClick={toggleMenu}
-                >
-                    {isOpen ? <X size={28} /> : <Menu size={28} />}
-                </button>
-            </div>
-
-            {/* Mobile Menu Dropdown */}
+            {/* Mobile Menu Dropdown - Moved OUTSIDE of nav to fix containing block issue */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        className="md:hidden fixed inset-0 bg-primary/95 backdrop-blur-2xl flex flex-col items-center justify-center z-[150]"
+                        className="md:hidden fixed inset-0 bg-primary/98 backdrop-blur-3xl flex flex-col items-center justify-center z-[200]"
                         initial={{ opacity: 0, y: '-100%' }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: '-100%' }}
@@ -146,7 +148,7 @@ const Navbar = ({ scrolled }) => {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </motion.nav>
+        </>
     );
 };
 

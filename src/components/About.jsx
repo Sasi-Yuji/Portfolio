@@ -20,22 +20,22 @@ const About = () => {
     };
 
     const itemLeft = {
-        hidden: { x: -300, opacity: 0 },
+        hidden: { x: -100, opacity: 0 },
         visible: { x: 0, opacity: 1, transition: { duration: 1, ease: [0.22, 1, 0.36, 1] } }
     };
 
     const itemRight = {
-        hidden: { x: 300, opacity: 0 },
+        hidden: { x: 100, opacity: 0 },
         visible: { x: 0, opacity: 1, transition: { duration: 1, ease: [0.22, 1, 0.36, 1] } }
     };
 
     const itemUp = {
-        hidden: { y: -200, opacity: 0 },
+        hidden: { y: -50, opacity: 0 },
         visible: { y: 0, opacity: 1, transition: { duration: 1, ease: [0.22, 1, 0.36, 1] } }
     };
 
     const itemDown = {
-        hidden: { y: 200, opacity: 0 },
+        hidden: { y: 50, opacity: 0 },
         visible: { y: 0, opacity: 1, transition: { duration: 1, ease: [0.22, 1, 0.36, 1] } }
     };
 
@@ -45,7 +45,7 @@ const About = () => {
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
+                    viewport={{ once: true, margin: "-50px" }}
                     variants={containerVariants}
                     className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24"
                 >
