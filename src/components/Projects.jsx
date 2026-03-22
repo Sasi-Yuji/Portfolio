@@ -52,7 +52,7 @@ const Projects = () => {
             title: "Budget Tracker",
             description: "Financial dashboard featuring transaction analytics, data visualization, and PDF export capabilities.",
             techStack: ["React", "Chart.js", "State Management"],
-            liveLink: "#",
+            liveLink: "https://personalbudgettracker-hazel.vercel.app/",
             githubLink: "https://github.com/Sasi-Yuji",
             link: budgetImg,
             color: "#40916C",
