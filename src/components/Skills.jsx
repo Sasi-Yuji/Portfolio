@@ -82,7 +82,7 @@ const Skills = () => {
                 { name: "Tailwind CSS", icon: Wind },
                 { name: "Bootstrap 5", icon: Box },
                 { name: "GSAP & Framer", icon: Sparkles },
-                { name: "TypeScript", icon: Code2 }
+                { name: "PHP", icon: Code2 }
             ]
         },
         {

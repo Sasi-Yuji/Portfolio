@@ -11,6 +11,32 @@ const Contact = () => {
         message: ''
     });
     const [status, setStatus] = useState('idle'); // 'idle' | 'sending' | 'success' | 'error'
+    const [emailError, setEmailError] = useState('');
+
+    const validateEmailDomain = (email) => {
+        if (!email) return '';
+        const atIndex = email.indexOf('@');
+        if (atIndex === -1) return '';
+
+        const domainPart = email.substring(atIndex + 1).toLowerCase();
+
+        if (/\d/.test(domainPart)) return "Domain cannot contain numbers";
+        if (domainPart === 'sagmail.com') return "Invalid domain. Did you mean gmail.com?";
+
+        if (domainPart.includes('.')) {
+            const parts = domainPart.split('.');
+            const domainName = parts[0];
+            const tld = parts[1];
+
+            if (domainName && domainName.includes('gmail') && domainName !== 'gmail') {
+                return "Did you mean gmail.com?";
+            }
+            if (domainName && tld && (!/^[a-zA-Z]+$/.test(domainName) || !/^[a-zA-Z]{2,}$/.test(tld))) {
+                return "Please enter a valid domain";
+            }
+        }
+        return '';
+    };
 
     const contactInfo = [
         { icon: <Mail size={22} />, title: 'Email', value: 'kumarsasi9081@gmail.com', href: 'mailto:kumarsasi9081@gmail.com' },
@@ -19,11 +45,36 @@ const Contact = () => {
     ];
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+        if (name === 'name') {
+            const filteredValue = value.replace(/[^a-zA-Z\s]/g, '').slice(0, 20);
+            setFormData({ ...formData, [name]: filteredValue });
+        } else if (name === 'email') {
+            const slicedValue = value.slice(0, 25);
+            setFormData({ ...formData, [name]: slicedValue });
+            setEmailError(validateEmailDomain(slicedValue));
+        } else if (name === 'subject') {
+            setFormData({ ...formData, [name]: value.slice(0, 25) });
+        } else if (name === 'message') {
+            setFormData({ ...formData, [name]: value.slice(0, 250) });
+        } else {
+            setFormData({ ...formData, [name]: value });
+        }
     };
+
+    const isFormValid = formData.name.trim() !== '' &&
+        formData.email.trim() !== '' &&
+        formData.subject.trim() !== '' &&
+        formData.message.trim() !== '' &&
+        formData.email.includes('@') &&
+        formData.email.includes('.') &&
+        emailError === '';
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!isFormValid) return;
+
         setStatus('sending');
 
         try {
@@ -151,61 +202,74 @@ const Contact = () => {
                             <form className="space-y-5 md:space-y-8" onSubmit={handleSubmit}>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8">
                                     <div className="space-y-3">
-                                        <label className="text-xs font-black text-highlight/40 uppercase tracking-widest ml-1">Full Name</label>
+                                        <label className="text-sm font-black text-highlight/70 uppercase tracking-wider ml-1">Full Name</label>
                                         <input
                                             type="text"
                                             name="name"
                                             value={formData.name}
                                             onChange={handleChange}
-                                            placeholder="John Doe"
-                                            className="w-full bg-primary/20 text-highlight font-bold border border-accent/10 rounded-2xl px-6 py-4 outline-none focus:border-accent/40 focus:ring-8 ring-accent/5 transition-all text-sm md:text-base"
+                                            placeholder="Sasikumar"
+                                            maxLength={20}
+                                            className="w-full bg-primary/20 text-highlight font-bold border border-accent/10 rounded-2xl px-6 py-4 outline-none focus:border-accent/40 focus:ring-8 ring-accent/5 transition-all text-sm md:text-base placeholder:text-highlight/50 placeholder:font-normal"
                                             required
                                         />
                                     </div>
                                     <div className="space-y-3">
-                                        <label className="text-xs font-black text-highlight/40 uppercase tracking-widest ml-1">Email Address</label>
+                                        <label className="text-sm font-black text-highlight/70 uppercase tracking-wider ml-1">Email Address</label>
                                         <input
                                             type="email"
                                             name="email"
                                             value={formData.email}
                                             onChange={handleChange}
-                                            placeholder="john@example.com"
-                                            className="w-full bg-primary/20 text-highlight font-bold border border-accent/10 rounded-2xl px-6 py-4 outline-none focus:border-accent/40 focus:ring-8 ring-accent/5 transition-all text-sm md:text-base"
+                                            placeholder="sasi@example.com"
+                                            maxLength={25}
+                                            className={`w-full bg-primary/20 text-highlight font-bold border ${emailError ? 'border-red-500 focus:border-red-500 ring-red-500/20' : 'border-accent/10 focus:border-accent/40 ring-accent/5'} rounded-2xl px-6 py-4 outline-none focus:ring-8 transition-all text-sm md:text-base placeholder:text-highlight/50 placeholder:font-normal`}
                                             required
                                         />
+                                        {emailError && (
+                                            <p className="text-red-500 text-xs font-bold ml-2 mt-1 animate-pulse">{emailError}</p>
+                                        )}
                                     </div>
                                 </div>
                                 <div className="space-y-3">
-                                    <label className="text-xs font-black text-highlight/40 uppercase tracking-widest ml-1">Subject</label>
+                                    <div className="flex justify-between items-center ml-1 mt-2">
+                                        <label className="text-sm font-black text-highlight/70 uppercase tracking-wider">Subject</label>
+                                        <span className="text-[10px] text-highlight/40 font-bold mr-2">{formData.subject.length}/25</span>
+                                    </div>
                                     <input
                                         type="text"
                                         name="subject"
                                         value={formData.subject}
                                         onChange={handleChange}
                                         placeholder="Opportunity Details"
-                                        className="w-full bg-primary/20 text-highlight font-bold border border-accent/10 rounded-2xl px-6 py-4 outline-none focus:border-accent/40 focus:ring-8 ring-accent/5 transition-all text-sm md:text-base"
+                                        maxLength={25}
+                                        className="w-full bg-primary/20 text-highlight font-bold border border-accent/10 rounded-2xl px-6 py-4 outline-none focus:border-accent/40 focus:ring-8 ring-accent/5 transition-all text-sm md:text-base placeholder:text-highlight/50 placeholder:font-normal"
                                         required
                                     />
                                 </div>
                                 <div className="space-y-3">
-                                    <label className="text-xs font-black text-highlight/40 uppercase tracking-widest ml-1">Your Message</label>
+                                    <div className="flex justify-between items-center ml-1 mt-2">
+                                        <label className="text-sm font-black text-highlight/70 uppercase tracking-wider">Your Message</label>
+                                        <span className="text-[10px] text-highlight/40 font-bold mr-2">{formData.message.length}/250</span>
+                                    </div>
                                     <textarea
                                         rows="5"
                                         name="message"
                                         value={formData.message}
                                         onChange={handleChange}
                                         placeholder="Let me know how I can help..."
-                                        className="w-full bg-primary/20 text-highlight font-bold border border-accent/10 rounded-2xl px-6 py-4 outline-none focus:border-accent/40 focus:ring-8 ring-accent/5 transition-all resize-none text-sm md:text-base"
+                                        maxLength={250}
+                                        className="w-full bg-primary/20 text-highlight font-bold border border-accent/10 rounded-2xl px-6 py-4 outline-none focus:border-accent/40 focus:ring-8 ring-accent/5 transition-all resize-none text-sm md:text-base placeholder:text-highlight/30 placeholder:opacity-[0.35] placeholder:font-normal"
                                         required
                                     ></textarea>
                                 </div>
 
                                 <button
                                     type="submit"
-                                    disabled={status === 'sending'}
-                                    className={`w-full py-4 md:py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] md:text-xs flex items-center justify-center gap-3 transition-all duration-300 ${status === 'sending'
-                                        ? 'bg-accent/20 text-accent cursor-not-allowed'
-                                        : 'bg-accent text-white hover:translate-y-[-4px] hover:shadow-2xl hover:shadow-accent/40 active:translate-y-0'
+                                    disabled={status === 'sending' || !isFormValid}
+                                    className={`w-full py-4 md:py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] md:text-xs flex items-center justify-center gap-3 transition-all duration-300 ${status === 'sending' || !isFormValid
+                                            ? 'bg-accent/20 text-accent/50 cursor-not-allowed'
+                                            : 'bg-accent text-white hover:translate-y-[-4px] hover:shadow-2xl hover:shadow-accent/40 active:translate-y-0'
                                         }`}
                                 >
                                     {status === 'sending' ? (

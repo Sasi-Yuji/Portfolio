@@ -53,29 +53,88 @@ const About = () => {
                     {/* Left Side: Avatar Animating from Left */}
                     <motion.div
                         variants={itemLeft}
-                        className="w-full lg:w-1/2 flex justify-center lg:justify-end"
+                        className="w-full lg:w-1/2 flex justify-center lg:justify-end pt-8 lg:pt-0"
                     >
-                        <div className="relative group">
-                            <div className="absolute inset-0 bg-accent/10 rounded-3xl rotate-3 group-hover:rotate-6 transition-transform duration-500 scale-95 md:scale-100"></div>
-                            <div className="absolute inset-0 bg-accent/5 rounded-3xl -rotate-3 group-hover:-rotate-1 transition-transform duration-500 scale-95 md:scale-100"></div>
+                        <motion.div 
+                            className="relative group cursor-grab active:cursor-grabbing"
+                            animate={{ y: [-8, 8, -8], rotate: [-1, 1, -1] }}
+                            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                            whileHover={{ y: -12, scale: 1.02, rotate: 0 }}
+                            style={{ transformOrigin: "top center" }}
+                        >
+                            {/* Thick Lanyard Strap */}
+                            <div className="absolute -top-[500px] left-1/2 -translate-x-1/2 w-10 md:w-14 h-[500px] bg-highlight z-20 flex flex-col items-center justify-end pb-8 overflow-hidden border-x border-white/5 shadow-[inset_0_4px_15px_rgba(0,0,0,0.5)]">
+                                {/* Subtle woven texture */}
+                                <div className="absolute inset-0 opacity-10 flex space-x-[2px] justify-center pointer-events-none">
+                                    <div className="w-[1px] h-full bg-white"></div>
+                                    <div className="w-[1px] h-full bg-white"></div>
+                                    <div className="w-[1px] h-full bg-transparent mx-0.5"></div>
+                                    <div className="w-[1px] h-full bg-white"></div>
+                                    <div className="w-[1px] h-full bg-white"></div>
+                                </div>
+                                {/* Repeating Logos */}
+                                <div className="flex flex-col items-center space-y-12 md:space-y-16 text-white/20 z-10 pointer-events-none">
+                                    <Terminal size={18} />
+                                    <Cpu size={18} />
+                                    <Terminal size={18} />
+                                    <Cpu size={18} />
+                                    <Terminal size={18} />
+                                </div>
+                            </div>
+                            
+                            {/* Lanyard Hardware / ID Clasp */}
+                            <div className="absolute -top-[55px] md:-top-[70px] left-1/2 -translate-x-1/2 z-30 flex flex-col items-center drop-shadow-[0_8px_8px_rgba(0,0,0,0.25)] cursor-pointer pointer-events-none group-hover:-translate-y-1 transition-transform duration-300">
+                                {/* Strap Fold over the D-Ring */}
+                                <div className="w-10 md:w-14 h-6 md:h-8 bg-highlight rounded-b-[4px] shadow-md z-20 flex flex-col justify-end items-center pb-1 border-b border-black/50">
+                                    <div className="w-6 md:w-10 h-[1px] bg-white/10 mb-[3px] md:mb-1"></div>
+                                    <div className="w-6 md:w-10 h-[1px] bg-white/10"></div>
+                                </div>
+                                
+                                {/* D-Ring Loop */}
+                                <div className="w-8 md:w-11 h-6 md:h-8 border-[3.5px] md:border-[5px] border-[#222] rounded-b-[10px] md:rounded-b-[14px] -mt-3 md:-mt-4 z-10 shadow-sm relative backdrop-blur-sm"></div>
+                                
+                                {/* Swivel Mechanism */}
+                                <div className="w-3 md:w-4 h-5 md:h-[22px] bg-gradient-to-b from-[#333] to-[#111] rounded-[2px] z-20 -mt-2 md:-mt-2.5 border border-[#444] relative shadow-md">
+                                    {/* Pivot pin */}
+                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[2px] md:h-[3px] bg-[#1a1a1a] rounded-full"></div>
+                                </div>
 
-                            <div className="relative z-10 w-[300px] h-[350px] md:w-[400px] md:h-[500px] rounded-3xl overflow-hidden bg-white border border-accent/10 shadow-xl p-4">
-                                <img
-                                    src={avatarImg}
-                                    alt="Sasikumar Avatar"
-                                    className="w-full h-full object-contain filter group-hover:scale-105 transition-transform duration-700"
-                                />
+                                {/* Clasp Hook (docks into the card hole) */}
+                                <div className="w-4 md:w-[22px] h-8 md:h-[42px] border-[3.5px] md:border-[5px] border-[#222] rounded-b-[10px] md:rounded-b-[12px] border-t-0 -mt-1 z-10 relative box-border">
+                                    {/* Spring arm detail */}
+                                    <div className="absolute right-[-3.5px] md:right-[-5px] top-1.5 w-[3.5px] md:w-[5px] h-[55%] bg-[#2a2a2a] rounded-full border-l border-white/5"></div>
+                                </div>
+                            </div>
 
+                            {/* Decorative Background layers */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-accent/5 rounded-[2.5rem] rotate-3 group-hover:rotate-6 transition-all duration-500 scale-95 md:scale-100 blur-[2px] opacity-80"></div>
+                            <div className="absolute inset-0 bg-gradient-to-tr from-accent/10 to-accent/5 rounded-[2.5rem] -rotate-3 group-hover:-rotate-1 transition-all duration-500 scale-95 md:scale-100 blur-[1px] opacity-80"></div>
+
+                            {/* The Main Card Container */}
+                            <div className="relative z-10 w-[300px] h-[350px] md:w-[400px] md:h-[500px] rounded-[2.5rem] overflow-hidden bg-white/90 backdrop-blur-xl border border-white/60 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.08),_0_0_30px_rgba(255,255,255,0.8)_inset] group-hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.12),_0_0_25px_rgba(255,255,255,0.9)_inset] p-4 pt-10 md:p-5 md:pt-14 transition-all duration-500">
+                                {/* The Punch Hole for the ID */}
+                                <div className="absolute top-3 md:top-5 left-1/2 -translate-x-1/2 w-12 md:w-16 h-3 md:h-[14px] bg-black/10 rounded-full shadow-[inset_0_4px_6px_rgba(0,0,0,0.4),_0_1px_1px_rgba(255,255,255,0.9)] border border-black/5 z-20 pointer-events-none"></div>
+
+                                <div className="w-full h-full rounded-[1.8rem] overflow-hidden relative">
+                                    <img
+                                        src={avatarImg}
+                                        alt="Sasikumar Avatar"
+                                        className="w-full h-full object-contain filter drop-shadow-sm group-hover:scale-[1.04] transition-transform duration-700 origin-center"
+                                    />
+                                </div>
+
+                                {/* Floating Uptime Badge */}
                                 <motion.div
-                                    animate={{ y: [0, -10, 0] }}
-                                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                    className="absolute bottom-8 right-8 bg-highlight text-white px-6 py-3 rounded-2xl shadow-2xl flex items-center gap-2"
+                                    animate={{ y: [0, -6, 0] }}
+                                    transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                                    whileHover={{ scale: 1.1, rotate: -2, y: -10 }}
+                                    className="absolute bottom-6 right-6 md:bottom-8 md:right-8 bg-highlight/95 backdrop-blur-md border border-white/10 text-white px-5 py-3 md:px-6 md:py-3.5 rounded-2xl shadow-[0_15px_35px_-5px_rgba(0,0,0,0.25)] hover:shadow-[0_20px_40px_-5px_rgba(0,0,0,0.35)] transition-all duration-300 flex items-center gap-2.5 z-30"
                                 >
-                                    <span className="text-xl font-black">99.9%</span>
-                                    <span className="text-[10px] items-center leading-none font-bold uppercase tracking-widest text-white/70">System<br />Uptime</span>
+                                    <span className="text-lg md:text-xl font-black tracking-tight drop-shadow-md">99.9%</span>
+                                    <span className="text-[9px] md:text-[10px] items-center leading-tight font-bold uppercase tracking-widest text-white/90 drop-shadow-sm">System<br />Uptime</span>
                                 </motion.div>
                             </div>
-                        </div>
+                        </motion.div>
                     </motion.div>
 
                     {/* Right Side: Content Animating from Right */}
