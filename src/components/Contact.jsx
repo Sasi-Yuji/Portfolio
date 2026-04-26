@@ -102,7 +102,8 @@ const Contact = () => {
                 setFormData({ name: '', email: '', subject: '', message: '' });
                 setTimeout(() => setStatus('idle'), 5000);
             } else {
-                throw new Error("Form submission failed");
+                console.error("FormSubmit Error Context:", result);
+                throw new Error(result.message || "Form submission failed");
             }
         } catch (error) {
             console.error('Submission Error:', error);

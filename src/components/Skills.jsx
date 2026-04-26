@@ -82,7 +82,7 @@ const Skills = () => {
                 { name: "Tailwind CSS", icon: Wind },
                 { name: "Bootstrap 5", icon: Box },
                 { name: "GSAP & Framer", icon: Sparkles },
-                { name: "PHP", icon: Code2 }
+                { name: "jQuery", icon: Code2 }
             ]
         },
         {
@@ -92,7 +92,7 @@ const Skills = () => {
             skills: [
                 { name: "Node.js", icon: TerminalSquare },
                 { name: "Express.js", icon: Server },
-                { name: "RESTful APIs", icon: Globe },
+                { name: "PHP & CI4", icon: Code2 },
                 { name: "JWT & RBAC", icon: ShieldCheck },
                 { name: "MongoDB", icon: Database },
                 { name: "SQL DB", icon: Database }
@@ -107,7 +107,7 @@ const Skills = () => {
                 { name: "Render & Netlify", icon: Globe },
                 { name: "Vercel / Hub", icon: Zap },
                 { name: "CPanel / SSH", icon: Server },
-                { name: "Vite Arch", icon: Zap },
+                { name: "CI/CD Pipelines", icon: RefreshCw },
                 { name: "Postman API", icon: Search }
             ]
         },
@@ -120,8 +120,8 @@ const Skills = () => {
                 { name: "Socket.IO (RT)", icon: Radio },
                 { name: "Unit & Integrate", icon: TestTube },
                 { name: "Multer / UP", icon: FileUp },
-                { name: "Nodemailer", icon: Send },
-                { name: "API Quality", icon: CheckCircle2 }
+                { name: "SMTP / Mailers", icon: Send },
+                { name: "Postman", icon: CheckCircle2 }
             ]
         }
     ];
