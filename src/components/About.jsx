@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, Terminal, Cpu, Layout, ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
-import avatarImg from '../assets/avatar.png';
+import avatarImg from '../assets/me_with_lap.png';
 
 const About = () => {
     const services = [
