@@ -42,7 +42,7 @@ const Projects = () => {
             title: "Know-Your-Laws",
             description: "Social impact platform providing simplified legal guidance for small businesses and common citizens.",
             techStack: ["MERN", "Responsive UI", "REST API"],
-            liveLink: "https://know-your-laws.onrender.com",
+            liveLink: "https://know-your-laws-1.onrender.com",
             githubLink: "https://github.com/Sasi-Yuji",
             link: knowLawImg,
             color: "#2D6A4F",
