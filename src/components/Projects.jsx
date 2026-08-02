@@ -32,7 +32,7 @@ const Projects = () => {
             title: "Vintage E-Commerce",
             description: "Retro-themed full-stack shopping application with specialized Admin Dashboard and Redux state management.",
             techStack: ["React", "Redux", "Express", "MongoDB"],
-            liveLink: "https://thunderous-beijinho-7dfd7b.netlify.app/",
+            liveLink: "https://e-commerce-hwih.onrender.com",
             githubLink: "https://github.com/Sasi-Yuji",
             link: ecommerceImg,
             color: "#1B4332",

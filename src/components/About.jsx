@@ -40,7 +40,7 @@ const About = () => {
     };
 
     return (
-        <section id="about" className="py-24 bg-white border-y border-accent/5 overflow-hidden">
+        <section id="about" className="py-24 bg-primary/30 border-y border-accent/10 overflow-hidden">
             <div className="main-container">
                 <motion.div
                     initial="hidden"
@@ -111,9 +111,9 @@ const About = () => {
                             <div className="absolute inset-0 bg-gradient-to-tr from-accent/10 to-accent/5 rounded-[2.5rem] -rotate-3 group-hover:-rotate-1 transition-all duration-500 scale-95 md:scale-100 blur-[1px] opacity-80"></div>
 
                             {/* The Main Card Container */}
-                            <div className="relative z-10 w-[300px] h-[350px] md:w-[400px] md:h-[500px] rounded-[2.5rem] overflow-hidden bg-white/90 backdrop-blur-xl border border-white/60 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.08),_0_0_30px_rgba(255,255,255,0.8)_inset] group-hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.12),_0_0_25px_rgba(255,255,255,0.9)_inset] p-4 pt-10 md:p-5 md:pt-14 transition-all duration-500">
+                            <div className="relative z-10 w-[300px] h-[350px] md:w-[400px] md:h-[500px] rounded-[2.5rem] overflow-hidden bg-primary/80 backdrop-blur-xl border border-accent/20 shadow-[0_20px_50px_-10px_rgba(11,78,25,0.15)] group-hover:shadow-[0_40px_80px_-15px_rgba(11,78,25,0.25)] p-4 pt-10 md:p-5 md:pt-14 transition-all duration-500">
                                 {/* The Punch Hole for the ID */}
-                                <div className="absolute top-3 md:top-5 left-1/2 -translate-x-1/2 w-12 md:w-16 h-3 md:h-[14px] bg-black/10 rounded-full shadow-[inset_0_4px_6px_rgba(0,0,0,0.4),_0_1px_1px_rgba(255,255,255,0.9)] border border-black/5 z-20 pointer-events-none"></div>
+                                <div className="absolute top-3 md:top-5 left-1/2 -translate-x-1/2 w-8 md:w-10 h-2.5 md:h-3 bg-highlight rounded-full shadow-[inset_0_3px_8px_rgba(0,0,0,0.8)] z-20 pointer-events-none"></div>
 
                                 <div className="w-full h-full rounded-[1.8rem] overflow-hidden relative">
                                     <img
