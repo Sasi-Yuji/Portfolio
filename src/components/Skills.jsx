@@ -94,8 +94,8 @@ const Skills = () => {
                 { name: "Express.js", icon: Server },
                 { name: "PHP & CI4", icon: Code2 },
                 { name: "JWT & RBAC", icon: ShieldCheck },
-                { name: "MongoDB", icon: Database },
-                { name: "SQL DB", icon: Database }
+                { name: "SQL & MongoDB", icon: Database },
+                { name: "RAG & Automation", icon: Cpu }
             ]
         },
         {
