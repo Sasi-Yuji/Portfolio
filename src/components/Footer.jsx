@@ -1,5 +1,5 @@
 import React from 'react';
-import { Linkedin, Github, Mail, Globe, Heart, Code2, Instagram } from 'lucide-react';
+import { Linkedin, Github, Mail, Globe, Code2, Instagram } from 'lucide-react';
 
 const Footer = () => {
     const socialLinks = [
@@ -48,7 +48,7 @@ const Footer = () => {
                         &copy; {new Date().getFullYear()} Sasikumar R. <span className="hidden md:inline">|</span> <span className="text-accent/40">Architecting the Future</span>
                     </p>
                     <p className="flex items-center gap-3 text-highlight/30 text-[10px] font-black uppercase tracking-[0.2em]">
-                        Made with <Heart size={16} className="text-red-500 fill-red-500 animate-[pulse_2s_infinite]" /> in Coimbatore
+                        Designed & Developed by Sasikumar R
                     </p>
                 </div>
             </div>
