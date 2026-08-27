@@ -159,7 +159,7 @@ const Contact = () => {
                                 <span className="mt-2 md:mt-0">Let's Discuss Solutions</span>
                             </h3>
                             <p className="text-highlight/60 text-base md:text-xl leading-relaxed max-w-xl mx-auto lg:mx-0 font-medium">
-                                I'm ready to bring my MERN expertise to your next big idea.
+                                I'm ready to bring my Full Stack experience to your next big idea.
                                 Whether it's a corporate portal or a custom HRM, I build for scale.
                             </p>
                         </div>

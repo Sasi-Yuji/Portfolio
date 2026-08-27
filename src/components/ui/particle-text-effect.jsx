@@ -158,7 +158,7 @@ export function ParticleTextEffect() {
         offscreenCtx.font = isMobile
             ? (isSmallMobile ? "900 20px 'Outfit', sans-serif" : "900 28px 'Outfit', sans-serif")
             : "900 38px 'Outfit', sans-serif";
-        offscreenCtx.fillText("MERN Stack Developer &", xPos, startY);
+        offscreenCtx.fillText("Full Stack Developer &", xPos, startY);
 
         startY += isMobile ? (isSmallMobile ? 28 : 36) : 48;
         offscreenCtx.fillText("UI/UX Enthusiast", xPos, startY);

@@ -20,7 +20,7 @@ const Footer = () => {
                         <p className="text-highlight/50 text-xs md:text-sm font-bold tracking-wide flex flex-col md:flex-row items-center gap-2 md:gap-3">
                             <span className="flex items-center gap-2 bg-white/50 px-3 py-1 rounded-full border border-accent/20">
                                 <Code2 size={16} className="text-accent" />
-                                MERN Stack Specialist
+                                Full Stack Specialist
                             </span>
                             <span className="hidden md:block text-accent/30">|</span>
                             <span className="text-highlight/30">Crafting High-Performance Solutions</span>
