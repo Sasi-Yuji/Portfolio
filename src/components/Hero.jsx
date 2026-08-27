@@ -134,7 +134,7 @@ const Hero = () => {
                             M
                         </div>
                         <div>
-                            <p className="text-[#0B6E4F] font-extrabold text-xs md:text-sm mb-0.5">MERN Specialist</p>
+                            <p className="text-[#0B6E4F] font-extrabold text-xs md:text-sm mb-0.5">Full Stack Specialist</p>
                             <p className="text-[#0B6E4F]/50 text-[8px] md:text-[10px] font-bold tracking-wider uppercase">Full-Stack</p>
                         </div>
                     </motion.div>
