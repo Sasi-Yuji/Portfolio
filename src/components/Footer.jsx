@@ -1,5 +1,6 @@
 import React from 'react';
 import { Linkedin, Github, Mail, Globe, Code2, Instagram } from 'lucide-react';
+import { TextHoverEffect } from './ui/hover-footer';
 
 const Footer = () => {
     const socialLinks = [
@@ -43,11 +44,11 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col md:flex-row justify-between items-center pt-10 border-t border-highlight/5 gap-8">
-                    <p className="text-highlight/30 text-[10px] font-black uppercase tracking-[0.2em] text-center md:text-left">
+                <div className="flex flex-col md:flex-row justify-between items-center pt-10 border-t border-highlight/5 gap-8 pb-4">
+                    <p className="text-highlight/30 text-[10px] font-black uppercase tracking-[0.2em] text-center md:text-left z-50">
                         &copy; {new Date().getFullYear()} Sasikumar R. <span className="hidden md:inline">|</span> <span className="text-accent/40">Architecting the Future</span>
                     </p>
-                    <p className="flex items-center gap-3 text-highlight/30 text-[10px] font-black uppercase tracking-[0.2em]">
+                    <p className="flex items-center gap-3 text-highlight/30 text-[10px] font-black uppercase tracking-[0.2em] z-50">
                         Designed & Developed by Sasikumar R
                     </p>
                 </div>
@@ -55,6 +56,11 @@ const Footer = () => {
 
             {/* Ambient Background Glow */}
             <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+            {/* Text hover effect */}
+            <div className="absolute inset-x-0 bottom-0 h-64 md:h-96 pointer-events-auto flex items-end justify-center overflow-hidden -z-0 opacity-40">
+                <TextHoverEffect text="<SASI/>" className="w-full translate-y-1/4" />
+            </div>
         </footer>
     );
 };
